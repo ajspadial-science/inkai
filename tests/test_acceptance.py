@@ -45,7 +45,7 @@ class AcceptanceTest(unittest.TestCase):
 
         # tests
 
-        inkai.load(table, book)
+        inkai.load(engine, book)
 
         with engine.connect() as conn:
             result = conn.execute(sqlalchemy.text('SELECT field1, field2 FROM singleRowTable'))
