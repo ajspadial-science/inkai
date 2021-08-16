@@ -46,9 +46,10 @@ class AcceptanceTest(unittest.TestCase):
         inkai.load(engine, book)
 
         with engine.connect() as conn:
+            result = conn.execute(sqlalchemy.text('SELECT COUNT(*) FROM singleRowTable'))
+            self.assertEqual(result.scalar(), 1)
             result = conn.execute(sqlalchemy.text('SELECT field1, field2 FROM singleRowTable'))
-            self.assertEqual(result.rowcount, 2)
-            row1 = result.first()
+            row1 = result.mappings().first()
             self.assertEqual(row1.field1, 101)
             self.assertEqual(row1.field2, 'ejemplo1')
 
