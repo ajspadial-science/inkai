@@ -2,14 +2,14 @@
 Acceptance tests
 """
 
-import unittest
+import pytest
 
 from .context import inkai
 
 import sqlalchemy
 import openpyxl
 
-class AcceptanceTest(unittest.TestCase):
+class TestAcceptance:
     """ Acceptance Test """
 
     def test_singlerow(self):
@@ -54,11 +54,11 @@ class AcceptanceTest(unittest.TestCase):
 
         with engine.connect() as conn:
             result = conn.execute(sqlalchemy.text('SELECT COUNT(*) FROM singleRowTable'))
-            self.assertEqual(result.scalar(), 1)
+            assert result.scalar() == 1
             result = conn.execute(sqlalchemy.text('SELECT field1, field2 FROM singleRowTable'))
             row1 = result.mappings().first()
-            self.assertEqual(row1.field1, 101)
-            self.assertEqual(row1.field2, 'ejemplo1')
+            assert row1.field1 == 101
+            assert row1.field2 == 'ejemplo1'
 
 if __name__ == '__main__':
     unittest.main()
