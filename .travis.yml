@@ -1,4 +1,7 @@
 language: python
+before_install:
+  - "pip instakk -U pip"
+  - "export PYTHONPATH=$PYTHONPATH:$(pwd)"
 install:
   - pip install -r requirements.txt
 script:
