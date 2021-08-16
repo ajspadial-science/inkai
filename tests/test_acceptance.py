@@ -36,12 +36,8 @@ class AcceptanceTest(unittest.TestCase):
         book['Metadata']['B2'] = 2
         book['Metadata']['B3'] = 'field2'
         
-        book['Data']['A1'] = 'field1'
-        book['Data']['B1'] = 'field2'
-        book['Data']['A2'] = 101
-        book['Data']['B2'] = 'ejemplo1'
-        book['Data']['A3'] = 103
-        book['Data']['B3'] = 'ejemplo2'
+        book['Data']['A1'] = 101
+        book['Data']['B1'] = 'ejemplo1'
 
         # tests
 
@@ -53,9 +49,6 @@ class AcceptanceTest(unittest.TestCase):
             row1 = result.first()
             self.assertEqual(row1.field1, 101)
             self.assertEqual(row1.field2, 'ejemplo1')
-            row2 = result.fetch()
-            self.assertEqual(row2.field1, 103)
-            self.assertEqual(row2.field2, 'ejemplo2')
 
 if __name__ == '__main__':
     unittest.main()
