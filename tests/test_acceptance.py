@@ -1,3 +1,7 @@
+"""
+Acceptance tests
+"""
+
 import unittest
 
 from .context import inkai
@@ -6,10 +10,13 @@ import sqlalchemy
 import openpyxl
 
 class AcceptanceTest(unittest.TestCase):
+    """ Acceptance Test """
 
     def test_singlerow(self):
-        # tests that the application can upload a spreadsheet with a single row
+        """
+        tests that the application can upload a spreadsheet with a single row
         # ACC03001
+        """
 
         # Test Fixture
 
@@ -17,7 +24,7 @@ class AcceptanceTest(unittest.TestCase):
         engine = sqlalchemy.create_engine(engine_url, echo=True, future=True)
         # fixture - create database
         metadata = sqlalchemy.MetaData()
-        table = sqlalchemy.Table(
+        sqlalchemy.Table(
             'singleRowTable',
             metadata,
             sqlalchemy.Column('field1', sqlalchemy.Integer),
@@ -37,7 +44,7 @@ class AcceptanceTest(unittest.TestCase):
         book['Metadata']['B2'] = 2
         book['Metadata']['B3'] = 'field2'
         book['Metadata']['B4'] = 'String'
-        
+
         book['Data']['A1'] = 101
         book['Data']['B1'] = 'ejemplo1'
 
