@@ -33,8 +33,10 @@ class AcceptanceTest(unittest.TestCase):
         book['Metadata']['A1'] = 'singleRowTable'
         book['Metadata']['A2'] = 1
         book['Metadata']['A3'] = 'field1'
+        book['Metadata']['A4'] = 'Integer'
         book['Metadata']['B2'] = 2
         book['Metadata']['B3'] = 'field2'
+        book['Metadata']['B4'] = 'String'
         
         book['Data']['A1'] = 101
         book['Data']['B1'] = 'ejemplo1'
